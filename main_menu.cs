@@ -9,25 +9,26 @@ public  class Card{
 	int attack;
 	int HP;
 	string ability_name; //left blank if the card does not have any of the named abilities (monster slayer, ranged, etc.)
+	public Card (int energy_cost, string name, string faction, int attack, int HP, string ability_name){
+		this.energy_cost = energy_cost;
+		this.name = name;
+		this.faction = faction;
+		this.attack = attack;
+		this.HP = HP;
+		this.ability_name = ability_name;
+	}
 }
 public partial class main_menu : Node2D
 {
 	
-	public Card archer = new Card();
-	archer.energy_cost = 1; //I don't know why, but right now it's throwing errors saying that archer does not exist in the current context
-	//(I'll let you guys know if restarting my computer fixed it, since it usually works for lots of the weird stuff).
-	archer.name = "Archer";
-	archer.faction = "GMK";
-	archer.attack =  2;
-	archer.HP = 1;
-	archer.ability_name = "ranged";
-
-	public Card squire = new Card();
-	squire.energy_cost = 1;
-	squire.name = "Squire";
-	squire.faction = "GMK";
-	archer.attack =  1;
-	archer.HP = 1;
+	public Card archer = new Card(1, "Archer", "GMK", 2, 1, "Ranged");
+	//Aaand voila, that works (for now)! To explain, the new thing in the Card class is a constructor - a method that activates when a new object of this class is made.
+	//It takes in the arguments given in the parentheses, and sets the new Card's attributes to those arguments.
+	//The "this" keyword is referring to the object currently being created. So the code in the constructor could be translated as:
+	//"Set the new object's attributes to the given arguments".
+	//So on and so forth, for all the other cards.
+	public Card squire = new Card(1, "Squire", "GMK", 1, 1, " ");
+	public Card scholar = new Card(1, "Scholar", "GMK", 0, 2, " ");
 	
 	int number_of_decks_GMK = 0;
 	//The variable above is for the select deck option - if the number is zero, there will be a text saying the player has no decks from that faction.
