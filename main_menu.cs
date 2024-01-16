@@ -1,6 +1,6 @@
 using Godot;
 using System;
-
+using System.Collections.Generic;
 public  class Card{
 
 	int energy_cost;
@@ -26,25 +26,25 @@ public  class Card{
 		this.faction = faction;
 		this.attack = attack;
 		this.HP = HP;
-		this.ability_name = ability_name;
+
 		this.category = category;
-		if (!tag1.IsNullOrEmpty){
+		if (!string.IsNullOrEmpty(tag1)){
 			this.tag_list.Add(tag1);
 		}
-		if (!tag2.IsNullOrEmpty){
+		if (!string.IsNullOrEmpty(tag2)){
 			this.tag_list.Add(tag2);
 		}
-		if(!tag3.IsNullOrEmpty){
+		if(!string.IsNullOrEmpty(tag3)){
 			this.tag_list.Add(tag3);
 		}
 
-		if (!ability1_name.IsNullOrEmpty){
+		if (!string.IsNullOrEmpty(ability1_name)){
 			this.ability_list.Add(ability1_name);
 		}
-		if (!ability2_name.IsNullOrEmpty){
+		if (!string.IsNullOrEmpty(ability2_name)){
 			this.ability_list.Add(ability2_name);
 		}
-		if (!ability3_name.IsNullOrEmpty){
+		if (!string.IsNullOrEmpty(ability3_name)){
 			this.ability_list.Add(ability3_name);
 		}
 	}
@@ -95,6 +95,8 @@ public partial class main_menu : Node2D
 	int number_of_decks_HM = 0; //half-monsters
 	bool was_deck_selected = false;
 	public SceneTree sceneTree;
+
+	string player_faction;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
