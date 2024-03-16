@@ -94,13 +94,16 @@ public partial class main_menu : Node2D
 	int number_of_decks_Barbarians = 0;
 	int number_of_decks_HM = 0; //half-monsters
 	bool was_deck_selected = false;
-	public SceneTree sceneTree;
-
+	public SceneTree sTree= new SceneTree();
+	
+	private Node2D settingsMenu;
+	private Node2D Main2D;
 	string player_faction;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		Show();
+		Main2D = GetNode<Node2D>("Main2D");
+		Main2D.Show();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -110,24 +113,26 @@ public partial class main_menu : Node2D
 
 	public void _on_create_deck_btn_pressed()
 	{
-		Hide();
+		Main2D.Hide();
 	}
 	public void _on_select_deck_btn_pressed()
 	{
-		Hide();
+		Main2D.Hide();
 	}
 	public void _on_setting_btn_pressed(){
-		Hide();
-		var settings_menu = GetNode<Node2D>("Settings2D");
-		settings_menu.Show();
+		Main2D = GetNode<Node2D>("Main2D");
+		Main2D.Hide();
+		settingsMenu = GetNode<Node2D>("Settings2D");
+		settingsMenu.Show();
 	}
 	public void _on_quit_button_pressed(){
-		sceneTree.Quit();
+		sTree.Quit();
 	}
 	public void _on_resume_button_pressed(){
-		var settings_menu = GetNode<Node2D>("Settings2D");
-		settings_menu.Hide();
-		Show();
+		Main2D = GetNode<Node2D>("Main2D");
+		settingsMenu = GetNode<Node2D>("Settings2D");
+		settingsMenu.Hide();
+		Main2D.Show();
 	}
 }
 
